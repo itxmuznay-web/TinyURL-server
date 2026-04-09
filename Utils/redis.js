@@ -21,9 +21,13 @@ export const connectRedis = async () => {
 };
 
 export const setCache = async (key, value, expireSeconds = 3600) => {
-  await redisClient.set(key, JSON.stringify(value), {
-    EX: expireSeconds,
-  });
+  try {
+    await redisClient.set(key, JSON.stringify(value), {
+      EX: expireSeconds,
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const getCache = async (key) => {
