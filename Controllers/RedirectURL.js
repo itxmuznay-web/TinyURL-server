@@ -5,6 +5,7 @@ export const RedirectURL = async (req, res) => {
   const { shortId } = req.params;
   try {
     //cache  hit
+    console.log(shortId);
     const longURlfromCache = await getCache(shortId);
     if (longURlfromCache) {
       console.log("Cache Hit");
