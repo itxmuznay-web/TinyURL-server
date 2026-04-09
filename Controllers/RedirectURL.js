@@ -7,7 +7,8 @@ export const RedirectURL = async (req, res) => {
     //cache  hit
     const longURlfromCache = await getCache(shortId);
     if (longURlfromCache) {
-      res.redirect(element.longUrl);
+      console.log("Cache Hit");
+      res.redirect(longURlfromCache);
       return;
     }
 
